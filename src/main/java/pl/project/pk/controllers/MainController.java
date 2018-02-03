@@ -22,6 +22,8 @@ public class MainController {
     @FXML
     private TopMenuButtonsController topMenuButtonsController;
 
+    private InvestmentCreateController investmentCreateController;
+
     @FXML
     private void initialize(){
         topMenuButtonsController.setMainController(this);

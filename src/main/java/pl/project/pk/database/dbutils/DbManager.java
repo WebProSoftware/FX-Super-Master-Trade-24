@@ -7,6 +7,7 @@ import com.j256.ormlite.logger.LoggerFactory;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 import pl.project.pk.database.models.Client;
+import pl.project.pk.database.models.Investment;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -58,6 +59,7 @@ public class DbManager {
     private static void createTable(){
         try {
             TableUtils.createTableIfNotExists(connectionSource, Client.class);
+            TableUtils.createTableIfNotExists(connectionSource, Investment.class);
         } catch (SQLException e) {
             LOGGER.warn(e.getMessage());
         }
@@ -66,6 +68,7 @@ public class DbManager {
     private static void dropTable(){
         try {
             TableUtils.dropTable(connectionSource, Client.class, true);
+            TableUtils.dropTable(connectionSource, Investment.class, true);
         } catch (SQLException e){
             LOGGER.warn(e.getMessage());
         }

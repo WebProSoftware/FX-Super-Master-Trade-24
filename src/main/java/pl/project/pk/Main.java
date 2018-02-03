@@ -7,6 +7,8 @@ import javafx.stage.Stage;
 import pl.project.pk.database.dbutils.DbManager;
 import pl.project.pk.utils.FxmlUtils;
 
+import java.util.Locale;
+
 public class Main extends Application {
 
     private static final String BORDER_PANE_MAIN_FXML = "/fxml/main/BorderPaneMain.fxml";
@@ -16,7 +18,9 @@ public class Main extends Application {
     }
 
     public void start(Stage primaryStage) throws Exception {
-        Pane borderPane = FxmlUtils.fxmlLoader(BORDER_PANE_MAIN_FXML);
+
+//        Locale.setDefault(Locale.ENGLISH);
+        Pane borderPane= FxmlUtils.fxmlLoader(BORDER_PANE_MAIN_FXML);
 
         Scene scene = new Scene(borderPane);
 

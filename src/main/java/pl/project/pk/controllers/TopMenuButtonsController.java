@@ -1,5 +1,6 @@
 package pl.project.pk.controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ToggleGroup;
 
@@ -9,6 +10,7 @@ public class TopMenuButtonsController {
     private static final String STORE_CLIENTS_FXML = "/fxml/store/Clients.fxml";
     private static final String STORE_STATISTICS_FXML = "/fxml/store/Statistics.fxml";
     private static final String ADD_CLIENTS_FXML = "/fxml/form/AddClients.fxml";
+    private static final String ADD_INVESTMENTS_FXML = "/fxml/form/AddInvestments.fxml";
 
     private MainController mainController;
 
@@ -36,6 +38,12 @@ public class TopMenuButtonsController {
         mainController.setCenter(ADD_CLIENTS_FXML);
     }
 
+    @FXML
+    public void addInvestment(ActionEvent actionEvent) {
+        this.resetToggleButtons();
+        mainController.setCenter(ADD_INVESTMENTS_FXML);
+    }
+
     public void setMainController(MainController mainController) {
         this.mainController = mainController;
     }
@@ -45,5 +53,6 @@ public class TopMenuButtonsController {
             toggleGroups.getSelectedToggle().setSelected(false);
         }
     }
+
 
 }

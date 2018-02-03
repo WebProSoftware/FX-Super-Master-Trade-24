@@ -1,8 +1,10 @@
 package pl.project.pk.controllers;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.input.MouseEvent;
 import org.omg.CORBA.portable.ApplicationException;
 import pl.project.pk.mapper.ClientMapper;
 import pl.project.pk.models.ClientModel;
@@ -38,6 +40,7 @@ public class ClientStoreController {
 
         try {
             this.clientModel.init();
+
         } catch (ApplicationException e) {
             e.printStackTrace();
             //TODO klasa z wlasnymi wyjatkami
