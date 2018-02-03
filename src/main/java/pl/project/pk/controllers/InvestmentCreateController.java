@@ -19,8 +19,6 @@ import java.util.ResourceBundle;
 
 public class InvestmentCreateController {
 
-    private static final String FXML_STORE_INVESTMENTS_FXML = "/fxml/store/Investments.fxml";
-
     @FXML
     public ComboBox <ClientMapper> clientList;
 

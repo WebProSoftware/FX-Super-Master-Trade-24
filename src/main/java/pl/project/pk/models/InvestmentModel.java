@@ -1,8 +1,5 @@
 package pl.project.pk.models;
 
-
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.omg.CORBA.portable.ApplicationException;
@@ -12,14 +9,27 @@ import pl.project.pk.database.dbutils.DbManager;
 import pl.project.pk.database.models.Client;
 import pl.project.pk.database.models.Investment;
 import pl.project.pk.mapper.ClientMapper;
+import pl.project.pk.mapper.InvestmentMapper;
 import pl.project.pk.utils.converters.ConventerClient;
+import pl.project.pk.utils.converters.ConventerInvestition;
 
 import java.util.List;
 
 public class InvestmentModel {
 
     private ObservableList<ClientMapper> clientMapperObservableList = FXCollections.observableArrayList();
+    private ObservableList<InvestmentMapper> investmentMapperObservableList = FXCollections.observableArrayList();
 
+    public void initStore() throws ApplicationException {
+        InvestmentDao investmentDao = new InvestmentDao(DbManager.getConnectionSource());
+        List<Investment> investments = investmentDao.queryForAll(Investment.class);
+        investments.forEach(investment -> {
+            InvestmentMapper investmentMapper = ConventerInvestition.converToInvestmentMapper(investment);
+            this.investmentMapperObservableList.add(investmentMapper);
+        });
+
+        DbManager.closeConnectionDB();
+    }
 
     public void init() throws ApplicationException {
         ClientDao clientDao = new ClientDao(DbManager.getConnectionSource());
@@ -59,5 +69,13 @@ public class InvestmentModel {
         investmentDao.createOrUpdate(investment);
         DbManager.closeConnectionDB();
 
+    }
+
+    public ObservableList<InvestmentMapper> getInvestmentMapperObservableList() {
+        return investmentMapperObservableList;
+    }
+
+    public void setInvestmentMapperObservableList(ObservableList<InvestmentMapper> investmentMapperObservableList) {
+        this.investmentMapperObservableList = investmentMapperObservableList;
     }
 }

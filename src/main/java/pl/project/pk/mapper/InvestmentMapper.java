@@ -6,9 +6,9 @@ import javafx.beans.property.*;
 public class InvestmentMapper {
 
     private IntegerProperty id = new SimpleIntegerProperty();
-    private StringProperty client_id = new SimpleStringProperty();
     private StringProperty category = new SimpleStringProperty();
-    private LongProperty amout = new SimpleLongProperty();
+    private ObjectProperty<ClientMapper> clientMapper = new SimpleObjectProperty<>();
+    private StringProperty amount = new SimpleStringProperty();
 
     public int getId() {
         return id.get();
@@ -20,18 +20,6 @@ public class InvestmentMapper {
 
     public void setId(int id) {
         this.id.set(id);
-    }
-
-    public String getClient_id() {
-        return client_id.get();
-    }
-
-    public StringProperty client_idProperty() {
-        return client_id;
-    }
-
-    public void setClient_id(String client_id) {
-        this.client_id.set(client_id);
     }
 
     public String getCategory() {
@@ -46,15 +34,27 @@ public class InvestmentMapper {
         this.category.set(category);
     }
 
-    public long getAmout() {
-        return amout.get();
+    public ClientMapper getClientMapper() {
+        return clientMapper.get();
     }
 
-    public LongProperty amoutProperty() {
-        return amout;
+    public ObjectProperty<ClientMapper> clientMapperProperty() {
+        return clientMapper;
     }
 
-    public void setAmout(long amout) {
-        this.amout.set(amout);
+    public void setClientMapper(ClientMapper clientMapper) {
+        this.clientMapper.set(clientMapper);
+    }
+
+    public String getAmount() {
+        return amount.get();
+    }
+
+    public StringProperty amountProperty() {
+        return amount;
+    }
+
+    public void setAmount(String amount) {
+        this.amount.set(amount);
     }
 }
